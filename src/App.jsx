@@ -13,15 +13,38 @@ export default function App() {
   });
 
   // Faz um spread pra inserir uma nova task
-  const addTask = (task) => {
+  const addTask = task => {
     setTasks([...tasks, {id: Date.now(), text: task, completed: false}]);
   };
 
 
-  const editTask = (id, newTask) => {
-    
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map(task => 
+        task.id === id ? { ... task, text: newText} : task
+      )
+    );
   };
 
+  const toggleTask = id => {
+    setTasks(
+      tasks.map(task =>
+        task.id === id ? {...task, completed: !task.completed} : task
+      )
+    );
+  }
+
+  const restoreTask = id => {
+    setTasks(
+      tasks.map(task =>
+        task.id === id ? {...task, completed: false} : task
+      )
+    );
+  }
+
+  const deleteTask = id => {
+    setTasks(tasks.filter(task => task.id !== id));
+  }
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -34,6 +57,9 @@ export default function App() {
         <Clock />
         <TaskInput addTask={addTask} />
         
+        <div className={styles.listsContainer}>
+          
+        </div>
       </div>
     </>
   );
