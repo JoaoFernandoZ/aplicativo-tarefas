@@ -58,7 +58,24 @@ export default function App() {
         <TaskInput addTask={addTask} />
         
         <div className={styles.listsContainer}>
-          
+          <div className={styles.pending}>
+              <h2>Tarefas Pendentes</h2>
+              <TaskList
+              tasks = {tasks.filter(task => !task.completed)}
+              toggleTask={toggleTask}
+              deleteTask={deleteTask}
+              editTask={editTask}
+              />
+          </div>
+
+          <div className={styles.completed}>
+              <h2>Tarefas Concluídas</h2>
+              <TaskList
+              tasks = {tasks.filter(task => task.completed)}
+              deleteTask={restoreTask}
+              isCompletedList={true}
+              />
+          </div>
         </div>
       </div>
     </>

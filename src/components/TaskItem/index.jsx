@@ -9,7 +9,7 @@ export default function TaskItem({
     isCompletedList = false,
 }){
     const [isEditing, setIsEditing] = useState(false);
-    const [newText, setNewText] = useState(task.Text);
+    const [newText, setNewText] = useState(task.text);
 
     const handleEdit = () => {
         if (isCompletedList) return;

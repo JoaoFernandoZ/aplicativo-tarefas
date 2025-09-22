@@ -3,3 +3,9 @@
   padding: 2.25rem 5rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.25);
 }
+
+.listsContainer{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
